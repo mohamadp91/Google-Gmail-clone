@@ -1,58 +1,62 @@
 package com.example.googlegmailclone.components
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.googlegmailclone.R
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeAppBar() {
+fun HomeAppBar(
+    scaffoldState: ScaffoldState,
+    scope: CoroutineScope
+) {
     Box(modifier = Modifier.padding(10.dp)) {
         Card(
-            elevation = CardDefaults.cardElevation(6.dp),
+            elevation = 6.dp,
             modifier = Modifier.requiredHeight(50.dp),
             shape = RoundedCornerShape(10.dp)
         ) {
             Row(
-                horizontalArrangement = Arrangement.SpaceAround,
-                verticalAlignment = Alignment.CenterVertically
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxSize()
             ) {
-                Icon(Icons.Default.Menu, "menu")
-                TextField(
-                    value = "Search Emails",
+                IconButton(modifier = Modifier.padding(6.dp), onClick = {
+                    scope.launch {
+                        scaffoldState.drawerState.open()
+                    }
+                }) {
+                    Icon(Icons.Default.Menu, "menu")
+                }
+                Text(
+                    text = "Search in mails...",
                     modifier = Modifier
-                        .weight(2.0f),
-                    onValueChange = {
-                    })
+                        .weight(2.0f)
+                )
                 Image(
                     painter = painterResource(id = R.drawable.ic_launcher_foreground),
                     contentDescription = "profile",
                     modifier = Modifier
                         .background(Color.Gray, CircleShape)
-                        .size(30.dp)
+                        .size(35.dp)
                         .clip(CircleShape)
                 )
             }
         }
 
     }
-}
-
-@Preview
-@Composable
-fun HomeAppBarPreview() {
-    HomeAppBar()
 }
