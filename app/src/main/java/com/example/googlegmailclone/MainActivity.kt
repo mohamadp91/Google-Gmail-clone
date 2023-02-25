@@ -9,8 +9,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.googlegmailclone.components.*
@@ -38,9 +37,18 @@ fun GmailApp() {
     val scaffoldState = rememberScaffoldState()
     val coroutineScope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
+    val shouldOpenDialog = remember {
+        mutableStateOf(false)
+    }
 
     Scaffold(scaffoldState = scaffoldState,
-        topBar = { HomeAppBar(scaffoldState, coroutineScope) },
+        topBar = {
+            HomeAppBar(
+                scaffoldState,
+                coroutineScope,
+                shouldOpenDialog
+            )
+        },
         drawerContent = { GmailDrawerMenu(scrollState) },
         bottomBar = { BottomBar() },
         floatingActionButton = { Fab(scrollState = scrollState) }) {
