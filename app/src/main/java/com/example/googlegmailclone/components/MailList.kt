@@ -13,6 +13,7 @@ import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Star
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,6 +36,76 @@ fun MailList(
             "Aim ever Upward",
             "training programming",
             "22:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
+        ),
+        MailData(
+            2,
+            "Ali",
+            "Take a break",
+            "Take a rest and prepare yourself",
+            "23:00"
         ),
         MailData(
             2,
@@ -71,14 +142,16 @@ fun MailItem(modifier: Modifier = Modifier, mailData: MailData) {
                 .padding(end = 8.dp)
                 .size(40.dp)
                 .clip(CircleShape),
-            backgroundColor = Color.Gray
+            backgroundColor = MaterialTheme.colorScheme.primary
         ) {
             Text(
                 text = mailData.username[0].toString(),
                 modifier = modifier
-                    .size(30.dp)
+                    .fillMaxSize()
                     .padding(8.dp),
-                textAlign = TextAlign.Center
+                textAlign = TextAlign.Center,
+                color = Color.White,
+                fontSize = 20.sp
             )
         }
         Column(
